@@ -98,10 +98,19 @@ file_content GetFileContent(char* Filename)
 
 #include "vitae_pdf_creator.h"
 
-int main()
+int main(int ArgumentCount, char** Arguments)
 {
-	// TODO(hugo) : Get filename from command line
-	file_content JsonFileContent = GetFileContent("cv_test.json");
+	char* Filename = 0;
+	if(ArgumentCount > 1)
+	{
+		Filename = Arguments[ArgumentCount - 1];
+	}
+	else
+	{
+		// TODO(hugo) : Log error and display help
+		InvalidCodePath;
+	}
+	file_content JsonFileContent = GetFileContent(Filename);
 
 	jsmn_parser Parser;
 	jsmntok_t Tokens[MAX_TOKEN_COUNT];
@@ -119,6 +128,7 @@ int main()
 	fwrite(FileLatexContent.Content, sizeof(char), (size_t)FileLatexContent.Size, OutputLatexFile);
 	fclose(OutputLatexFile);
 
+	// TODO(hugo) : Get rid of system and use directly windows for that ?
 	system("pdflatex -quiet -interaction=nonstopmode output.tex");
 	system("call output.pdf");
 
