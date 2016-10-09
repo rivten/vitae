@@ -42,6 +42,7 @@ struct vitae_data
 	char* AuthorPhone;
 	char* AuthorMail;
 	char* AuthorAddress;
+	char* Website;
 	vitae_entry* EducationEntries;
 	vitae_entry* WorkExpEntries;
 	vitae_entry* MiscEntries;

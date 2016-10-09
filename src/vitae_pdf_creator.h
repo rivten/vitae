@@ -51,6 +51,9 @@ file_content CreateLatexFileContent(vitae_data Data)
 	WriteToDest("}\n\\email{", &CurrentWritingPoint);
 	WriteToDest(Data.AuthorMail, &CurrentWritingPoint);
 
+	WriteToDest("}\n\\homepage{", &CurrentWritingPoint);
+	WriteToDest(Data.Website, &CurrentWritingPoint);
+
 	WriteToDest("}\n\\begin{document}\n\\makecvtitle\n\\vspace*{-1.2cm}\n\n\\section{Education}\n", &CurrentWritingPoint);
 	WriteVitaeEntryList(Data.EducationEntries, &CurrentWritingPoint);
 

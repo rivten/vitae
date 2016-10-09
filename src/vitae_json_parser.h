@@ -156,6 +156,11 @@ vitae_data CreateVitaeData(char* JsonContent, size_t JsonSize, jsmntok_t* Tokens
 						++TokenIndex;
 						Result.AuthorPhone = ReadStringToken(Tokens[TokenIndex], JsonContent);
 					}
+					else if(strcmp(Type, "website") == 0)
+					{
+						++TokenIndex;
+						Result.Website = ReadStringToken(Tokens[TokenIndex], JsonContent);
+					}
 					else if(strcmp(Type, "email") == 0)
 					{
 						++TokenIndex;
